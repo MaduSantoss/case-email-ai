@@ -1,0 +1,64 @@
+:root {
+    --bg-main: #020617;       
+    --card-bg: #1e293b;       
+    --accent: #3b82f6;        
+    --text-main: #f8fafc;     
+    --text-sec: #94a3b8;      
+    --border: rgba(255, 255, 255, 0.08); 
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at top right, #1e1b4b, transparent 40%);
+}
+
+.bento-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.drop-active {
+    border-color: var(--accent) !important;
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+h1 { letter-spacing: -0.025em; }
+
+.label-micro {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-sec);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.toast-enter {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.toast-exit {
+    animation: fadeOut 0.3s ease-in forwards;
+}
