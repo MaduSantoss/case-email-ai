@@ -76,7 +76,7 @@ async function uploadFile(file) {
     fd.append('file', file);
     
     try {
-        const res = await fetch('http://127.0.0.1:8000/classificar-arquivo', { method: 'POST', body: fd });
+        const res = await fetch('/api/classificar-arquivo', { method: 'POST', body: fd });
         if (!res.ok) throw new Error("Falha na conexão");
         const data = await res.json();
         render(data);
@@ -125,7 +125,7 @@ async function handleTextUpload() {
     
     toggleLoading(true);
     try {
-        const res = await fetch('http://127.0.0.1:8000/classificar-texto', {
+        const res = await fetch('/api/classificar-texto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: text })
