@@ -76,7 +76,7 @@ def analyze_email(content):
 
 @app.get("/api/")
 def read_root():
-    return {"message": "Servidor FinanceFlow Online 🚀"}
+    return {"message": "Servidor MailFlow Online 🚀"}
 
 @app.post("/api/classificar-arquivo")
 async def classify_file(file: UploadFile = File(...)):
