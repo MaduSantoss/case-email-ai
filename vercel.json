@@ -1,26 +1,16 @@
 {
-"builds": [
+  "rewrites": [
     {
-        "src": "backend/app.py",
-        "use": "@vercel/python"
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
     },
     {
-        "src": "frontend/**",
-        "use": "@vercel/static"
-    }
-],
-"rewrites": [
-    {
-        "source": "/api/(.*)",
-        "destination": "/backend/app.py"
+      "source": "/",
+      "destination": "/frontend/index.html"
     },
     {
-        "source": "/",
-        "destination": "/frontend/index.html"
-    },
-    {
-        "source": "/(.*)",
-        "destination": "/frontend/$1"
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
     }
   ]
 }
