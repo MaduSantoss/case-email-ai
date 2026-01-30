@@ -13,6 +13,10 @@ load_dotenv()
 
 app = FastAPI()
 
+@app.get("/")
+def home():
+    return {"message": "API MailFlow Online! O Frontend está rodando na rota principal."}
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
