@@ -1,96 +1,100 @@
-# MailFlow | Intelligent Financial Triaging
+# 🚀 MailFlow - Automação de Triagem de E-mails
 
-> Sistema de Inteligência Artificial para triagem automática, priorização e resposta de e-mails financeiros.
+![Project Status](https://img.shields.io/badge/Status-Concluído-success)
+![Python](https://img.shields.io/badge/Backend-FastAPI-blue)
+![AI](https://img.shields.io/badge/AI-Llama3-purple)
+![Deploy](https://img.shields.io/badge/Deploy-Vercel-black)
 
-![Status](https://img.shields.io/badge/status-concluído-emerald)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![AI Model](https://img.shields.io/badge/LLM-Llama%203.3-violet)
+## 📋 Sobre o Projeto
+O **MailFlow** é uma solução Full-Stack desenvolvida para otimizar a rotina de departamentos financeiros. O sistema utiliza Inteligência Artificial Generativa para ler, interpretar e classificar e-mails e anexos (faturas, comprovantes, dúvidas), gerando minutas de respostas automáticas.
 
-## 🎯 O Problema
-Equipes financeiras perdem horas preciosas lendo e-mails repetitivos, separando comprovantes de spam e redigindo respostas padrão. A sobrecarga operacional gera atrasos em demandas críticas (como estornos e pagamentos).
+O objetivo é reduzir o tempo gasto em triagem manual e aumentar a produtividade da equipe.
 
-## 💡 A Solução: MailFlow
-O **MailFlow** atua como um analista júnior digital. Ele lê anexos (PDF/TXT) ou textos copiados, entende o contexto usando **NLP (Processamento de Linguagem Natural)** e utiliza um **LLM (Llama 3.3)** para:
-
-1.  **Classificar** a demanda (Produtivo vs Improdutivo).
-2.  **Definir Prioridade** (Alta, Média, Baixa) com base no conteúdo financeiro.
-3.  **Redigir a Resposta** formal, empática e pronta para envio.
-
-### ✨ Diferenciais Técnicos (Highlights)
-* **Pipeline de NLP Customizado:** Implementação de um estágio de pré-processamento que realiza limpeza de texto (Regex) e remoção de *Stop Words* (palavras irrelevantes) antes da inferência. Isso aumenta a precisão da IA e reduz o custo computacional.
-* **UX/UI Profissional:** Interface "Deep Navy" focada em produtividade, com feedback visual em tempo real (Toasts), Drag & Drop intuitivo com validação visual e layout responsivo.
-* **Arquitetura Resiliente:** Tratamento robusto de erros no Backend e Frontend. Se a IA falhar ou a conexão cair, o sistema degrada graciosamente com mensagens claras ao usuário, sem travar a aplicação.
+### 🔴 Teste Ao Vivo 
+👉 **Acesse o projeto rodando na nuvem:** https://case-email-ai.vercel.app/
 
 ---
 
-## 🛠️ Stack Tecnológica
+## 🛠️ Tecnologias Utilizadas
 
-A arquitetura foi desenhada para ser desacoplada, escalável e de fácil manutenção.
+### Backend & AI
+* **Python 3.12+**
+* **FastAPI:** Framework moderno e assíncrono para construção da API.
+* **Groq Cloud (Llama 3.3):** LLM de altíssima velocidade para inferência e análise de contexto.
+* **Pypdf:** Processamento robusto de arquivos PDF para extração de texto.
+* **Regex & NLP:** Pré-processamento de texto para limpeza de dados e economia de tokens.
 
-| Camada | Tecnologia | Motivo da Escolha |
-| :--- | :--- | :--- |
-| **Backend** | `FastAPI` | Alta performance (ASGI), tipagem forte e validação automática de dados com Pydantic. |
-| **AI Engine** | `Groq Cloud` | Uso de LPUs (Language Processing Units) para inferência em tempo real do modelo `Llama-3.3-70b`. |
-| **Data Processing** | `PyMuPDF` + `Regex` | Extração precisa de dados de PDFs e higienização de strings para o pipeline de NLP. |
-| **Frontend** | `Vanilla JS` + `Tailwind` | Interface leve e rápida, sem o *overhead* de frameworks complexos (React/Vue) para este escopo. |
+### Frontend
+* **HTML5 & Vanilla JavaScript:** Foco em performance e leveza.
+* **TailwindCSS:** Estilização responsiva e moderna.
+
+### Infraestrutura
+* **Vercel:** Deploy serverless com integração CI/CD automática via GitHub.
 
 ---
 
-## ⚡ Como Rodar Localmente
+## ⚙️ Funcionalidades
 
-### Pré-requisitos
-* Python 3.10 ou superior.
-* Uma chave de API da Groq (Gratuita).
+1.  **Upload de Arquivos (PDF/TXT):** Extração automática de conteúdo de anexos financeiros.
+2.  **Análise de Contexto:** A IA identifica se o e-mail é "Produtivo" (faturas, boletos) ou "Improdutivo" (spam, phishing).
+3.  **Classificação de Prioridade:** Define se a demanda é ALTA, MÉDIA ou BAIXA.
+4.  **Geração de Resposta:** Cria um rascunho de e-mail formal pronto para ser enviado.
 
-### 1. Clonar e Instalar
-Clone o repositório e instale as dependências listadas:
+---
+
+## 🚀 Como Rodar Localmente
+
+Se quiser rodar o projeto na sua máquina:
+
+### 1. Clone o repositório
+```bash
+git clone https://github.com/MaduSantoss/case-email-ai
+cd case-email-ai
+
+```
+
+### 2. Configure as Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto e adicione sua chave da Groq:
+
+```env
+GROQ_API_KEY=_sua_chave_aqui
+
+```
+
+### 3. Instale as Dependências
 
 ```bash
-# Clone o projeto
-git clone [https://github.com/MaduSantoss/case-email-ai]
-
-# Entre na pasta do backend
-cd backend
-
-# Instale os pacotes
 pip install -r requirements.txt
 
 ```
 
-### 2. Configurar Variáveis de Ambiente
-
-Crie um arquivo `.env` dentro da pasta `backend` e adicione sua chave de API para habilitar a IA:
-
-```env
-GROQ_API_KEY=sua_chave_aqui_gsk_...
-
-```
-
-### 3. Executar a Aplicação
-
-Inicie o servidor de desenvolvimento:
+### 4. Execute o Servidor
 
 ```bash
-python -m uvicorn app:app --reload
+python -m uvicorn api.index:app --reload
 
 ```
 
-*O servidor iniciará em `http://127.0.0.1:8000*`
-
-### 4. Acessar
-
-Abra o arquivo `frontend/index.html` diretamente no seu navegador ou use um servidor local (como o Live Server do VS Code).
+Acesse em: `http://127.0.0.1:8000`
 
 ---
 
-## 🧠 Decisões de Design (Engenharia)
+## 📂 Estrutura do Projeto
 
-1. **Segurança e Privacidade:** O arquivo `.gitignore` foi configurado para excluir segredos (.env) e arquivos temporários, garantindo que credenciais não sejam expostas no repositório.
-2. **Otimização de Tokens:** A função `clean_text` no backend remove ruídos do e-mail. Isso significa que enviamos menos dados para a API da Groq, resultando em respostas mais rápidas e menor custo por token.
-3. **Usabilidade (Hick's Law):** A interface foi simplificada para reduzir a carga cognitiva do usuário. O sistema de abas separa claramente as duas formas de entrada (Arquivo vs Texto), e o feedback visual (Toasts) confirma cada ação do sistema.
+```
+/
+├── api/                 # Backend (Python/FastAPI)
+│   └── index.py         # Lógica principal e rotas
+├── frontend/            # Frontend (HTML/JS/CSS)
+├── requirements.txt     # Dependências do projeto
+├── vercel.json          # Configuração de Deploy
+└── README.md            # Documentação
+
+```
 
 ---
 
-## 📄 Licença
+## 📞 Contato
 
-Desenvolvido como parte de um Case Técnico para vaga de Desenvolvimento de Software.
+Desenvolvido por **Maria Eduarda Santos Silva**.
